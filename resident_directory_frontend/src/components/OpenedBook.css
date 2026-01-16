@@ -1,0 +1,115 @@
+.bookViewport {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 24px;
+}
+
+.book {
+  width: min(1100px, 100%);
+  height: min(720px, calc(100vh - 48px));
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+}
+
+.bookSpine {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06),
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.06)
+  );
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.bookPage {
+  background: var(--bg-primary);
+  padding: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bookPageLeft {
+  border-right: 1px solid var(--border-color);
+}
+
+.bookPageRight {
+  border-left: 1px solid var(--border-color);
+}
+
+.pageHeader {
+  text-align: left;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.pageSubtitle {
+  margin: 6px 0 0 0;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .pageSubtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pageBody {
+  flex: 1;
+  display: flex;
+}
+
+.placeholderCard {
+  width: 100%;
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  background: var(--bg-secondary);
+}
+
+.placeholderText {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .placeholderText {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Simple responsiveness: stack pages on small screens */
+@media (max-width: 860px) {
+  .book {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .bookSpine {
+    display: none;
+  }
+
+  .bookPageLeft,
+  .bookPageRight {
+    border: none;
+  }
+
+  .bookPage {
+    min-height: 320px;
+  }
+}
