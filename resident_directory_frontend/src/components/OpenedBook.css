@@ -18,6 +18,13 @@
   overflow: hidden;
   background: var(--bg-secondary);
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 160ms ease, border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+/* Clean View removes extra depth effects */
+[data-clean-view="true"] .book {
+  box-shadow: none;
 }
 
 .bookSpine {
@@ -29,6 +36,11 @@
   );
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
+  transition: background 160ms ease;
+}
+
+[data-clean-view="true"] .bookSpine {
+  background: var(--bg-secondary);
 }
 
 .bookPage {
@@ -133,6 +145,11 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   outline: none;
+  transition: box-shadow 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.searchInput:hover {
+  border-color: rgba(97, 218, 251, 0.55);
 }
 
 .searchInput:focus {
@@ -154,10 +171,22 @@
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease,
+    background-color 120ms ease;
 }
 
 .azButton:hover {
   filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.azButton:active {
+  transform: translateY(0);
+}
+
+[data-clean-view="true"] .azButton:hover {
+  filter: none;
+  transform: none;
 }
 
 .azButton:focus-visible {
@@ -218,10 +247,20 @@
   gap: 12px;
   cursor: pointer;
   color: var(--text-primary);
+  transition: background-color 140ms ease, transform 140ms ease;
 }
 
 .residentRow:hover {
   background: rgba(0, 0, 0, 0.04);
+  transform: translateX(2px);
+}
+
+.residentRow:active {
+  transform: translateX(0);
+}
+
+[data-clean-view="true"] .residentRow:hover {
+  transform: none;
 }
 
 [data-theme="dark"] .residentRow:hover {
@@ -278,6 +317,21 @@
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+}
+
+.pageButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(0.99);
+}
+
+.pageButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+[data-clean-view="true"] .pageButton:hover:not(:disabled) {
+  transform: none;
+  filter: none;
 }
 
 .pageButton:disabled {
